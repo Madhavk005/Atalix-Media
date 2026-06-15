@@ -21,7 +21,10 @@ export default function Hero() {
     <section id="home" className="relative h-screen w-full flex flex-col justify-between overflow-hidden bg-[#1E1E1E]">
       
       {/* Animated Aurora Gradients Behind Typography */}
-      <div className="absolute inset-0 z-0 flex items-end justify-center pointer-events-none overflow-hidden">
+      <div 
+        className="absolute inset-0 z-0 flex items-end justify-center pointer-events-none overflow-hidden"
+        style={{ filter: "blur(100px)", transform: "translateZ(0)", willChange: "transform" }}
+      >
         
         {/* Gradient 01: Deep Blue Base */}
         <motion.div 
@@ -34,8 +37,8 @@ export default function Hero() {
           transition={{ duration: 22, ease: "easeInOut", repeat: Infinity }}
           className="absolute bottom-[-15%] left-[-10%] w-[60vw] h-[60vh] mix-blend-screen rounded-[100%]"
           style={{ 
-            background: "radial-gradient(circle at center, rgba(29,161,242,0.35) 0%, rgba(29,161,242,0) 70%)", 
-            filter: "blur(120px)" 
+            background: "radial-gradient(circle at center, rgba(29,161,242,0.4) 0%, rgba(29,161,242,0) 70%)",
+            willChange: "transform"
           }}
         />
         
@@ -50,8 +53,8 @@ export default function Hero() {
           transition={{ duration: 28, ease: "easeInOut", repeat: Infinity }}
           className="absolute bottom-[-25%] right-[-5%] w-[65vw] h-[55vh] mix-blend-screen rounded-[100%]"
           style={{ 
-            background: "radial-gradient(circle at center, rgba(86,200,255,0.25) 0%, rgba(86,200,255,0) 70%)", 
-            filter: "blur(140px)" 
+            background: "radial-gradient(circle at center, rgba(86,200,255,0.3) 0%, rgba(86,200,255,0) 70%)",
+            willChange: "transform"
           }}
         />
 
@@ -65,8 +68,8 @@ export default function Hero() {
           transition={{ duration: 18, ease: "easeInOut", repeat: Infinity }}
           className="absolute bottom-[-5%] left-[30%] w-[45vw] h-[45vh] mix-blend-screen rounded-[100%]"
           style={{ 
-            background: "radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%)", 
-            filter: "blur(100px)" 
+            background: "radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%)",
+            willChange: "transform"
           }}
         />
 
@@ -80,8 +83,8 @@ export default function Hero() {
           transition={{ duration: 25, ease: "easeInOut", repeat: Infinity, delay: 2 }}
           className="absolute bottom-[5%] right-[20%] w-[50vw] h-[40vh] mix-blend-screen rounded-[100%]"
           style={{ 
-            background: "radial-gradient(circle at center, rgba(130,216,255,0.15) 0%, rgba(130,216,255,0) 70%)", 
-            filter: "blur(120px)" 
+            background: "radial-gradient(circle at center, rgba(130,216,255,0.2) 0%, rgba(130,216,255,0) 70%)",
+            willChange: "transform"
           }}
         />
       </div>

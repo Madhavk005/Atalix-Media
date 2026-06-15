@@ -37,7 +37,7 @@ export default function PrintableAssets() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.8, ease: "easeOut" }}
-                className="group relative p-10 rounded-[32px] overflow-hidden bg-white/[0.02] border border-white/5 backdrop-blur-3xl shadow-2xl flex flex-col justify-between aspect-square hover:bg-white/[0.04] transition-colors duration-500 cursor-pointer"
+                className="group relative p-10 rounded-[32px] overflow-hidden bg-white/[0.05] border border-white/5 shadow-2xl flex flex-col justify-between aspect-square hover:bg-white/[0.08] transition-colors duration-500 cursor-pointer"
               >
                 {asset.img && (
                   <img src={asset.img} alt={asset.title} className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-500 z-0" />

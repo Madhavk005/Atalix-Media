@@ -81,8 +81,17 @@ export default function PerformanceAdsService() {
               { title: "Beyond Bricks", tag: "Real Estate", roas: "12x", video: "/projects/Beyond Bricks/BB Maintenance Checklist.mp4" },
               { title: "KOOK Stores", tag: "Apparel", roas: "4.8x", video: "/projects/KOOK Stores/Cargo Pants Difference Reel.mp4" }
             ].map((project, i) => (
-              <div key={i} className="group relative aspect-square rounded-[24px] overflow-hidden bg-[#1a1a1a] border border-white/5 cursor-pointer">
-                <video src={project.video} autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-opacity duration-500" />
+              <div key={i} className="group relative aspect-square rounded-[24px] overflow-hidden bg-[#1a1a1a] border border-white/5 cursor-pointer" style={{ willChange: "transform" }}>
+                <video 
+                  src={project.video} 
+                  muted 
+                  loop 
+                  playsInline 
+                  preload="none"
+                  onMouseEnter={(e) => e.currentTarget.play()}
+                  onMouseLeave={(e) => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }}
+                  className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-opacity duration-500" 
+                />
                 <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none transition-transform duration-500 group-hover:-translate-y-4">
                   <div className="text-4xl md:text-5xl font-heading font-black text-atalix-accent mb-2 drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]">{project.roas}</div>
                   <span className="text-white/90 font-bold uppercase tracking-widest text-sm drop-shadow-md">ROAS</span>

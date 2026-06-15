@@ -40,6 +40,7 @@ export default function Reels() {
       <div className="relative w-full flex overflow-hidden py-10 mask-edges">
         <motion.div 
           className="flex gap-6 md:gap-8 w-max pr-6 md:pr-8"
+          style={{ willChange: "transform" }}
           animate={{ x: ["0%", "-50%"] }}
           transition={{ 
             repeat: Infinity, 
@@ -51,17 +52,19 @@ export default function Reels() {
           {duplicatedCategories.map((cat, idx) => (
             <div 
               key={idx} 
-              className="reel-card relative w-[280px] h-[480px] md:w-[380px] md:h-[650px] shrink-0 rounded-[32px] overflow-hidden bg-white/[0.02] backdrop-blur-3xl border border-white/10 group cursor-pointer shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-700 hover:border-white/30"
+              className="reel-card relative w-[280px] h-[480px] md:w-[380px] md:h-[650px] shrink-0 rounded-[32px] overflow-hidden bg-white/[0.05] border border-white/10 group cursor-pointer shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-700 hover:border-white/30"
             >
               {/* Internal Glass Highlight */}
               <div className="absolute inset-0 border border-white/5 rounded-[32px] pointer-events-none z-20" />
               
               <video 
                 src={cat.video} 
-                autoPlay 
                 muted 
                 loop 
                 playsInline 
+                preload="none"
+                onMouseEnter={(e) => e.currentTarget.play()}
+                onMouseLeave={(e) => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }}
                 className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-[0.16,1,0.3,1] z-0"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1E1E1E]/90 via-[#1E1E1E]/20 to-transparent pointer-events-none z-10" />
