@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Large Media files
+Atalix Media/
+public/projects/**/*.mp4
+public/projects/**/*.mov
+public/projects/**/HOLI*
