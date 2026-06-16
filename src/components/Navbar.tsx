@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
   return (
@@ -16,9 +17,11 @@ export default function Navbar() {
         {/* Left: Minimal Logo */}
         <div className="flex items-center pointer-events-auto">
           <Link href="/">
-            <img 
+            <Image 
               src="/atalix-logo-white.png" 
               alt="ATALIX MEDIA" 
+              width={200}
+              height={80}
               className="h-12 md:h-16 w-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:opacity-80 transition-opacity" 
             />
           </Link>

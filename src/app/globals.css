@@ -148,6 +148,7 @@
     background-size: 200% auto;
     animation: textShine 6s linear infinite;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
   }

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -37,9 +38,11 @@ export default function Footer() {
           
           {/* Left / Logo Area */}
           <div className="flex flex-col gap-3 items-center lg:items-start text-center lg:text-left">
-            <img 
+            <Image 
               src="/atalix-logo-white.png" 
               alt="ATALIX MEDIA" 
+              width={200}
+              height={80}
               className="h-16 md:h-20 w-auto object-contain opacity-90 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] mb-2" 
             />
             <p className="max-w-[250px] leading-relaxed">

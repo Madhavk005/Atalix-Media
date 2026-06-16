@@ -3,6 +3,7 @@ import Footer from "@/components/sections/Footer";
 import StickyCTA from "@/components/StickyCTA";
 import CTA from "@/components/sections/CTA";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function BrandingService() {
   return (
@@ -81,18 +82,28 @@ export default function BrandingService() {
             {[
               { title: "KOOK Stores", tag: "Brand Identity", img: "/projects/KOOK Stores/Cargo Pants Carousel/Cargo-CarouselArtboard-1.png" },
               { title: "FNP", tag: "Visual Refresh", img: "/projects/FNP/Carousel/003.jpg" },
-              { title: "Beyond Bricks", tag: "Digital Presence", img: "/projects/Beyond Bricks/Just Listed.png" },
+              { title: "Beyond Bricks", tag: "Brand Guidelines", img: "/projects/Beyond Bricks/Just Listed.png", link: "/projects/Beyond Bricks/Beyond Bricks Brand Guidelines.pdf" },
               { title: "Jitesh Fabrics", tag: "Collateral", img: "/projects/Jitesh Fabrics/GSM Carousel/001.jpg" }
-            ].map((project, i) => (
-              <div key={i} className="group relative aspect-[4/3] rounded-[24px] overflow-hidden bg-[#1a1a1a] border border-white/5 cursor-pointer">
-                <img src={project.img} alt={project.title} className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-0 left-0 p-8 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                  <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
-                  <p className="text-white/60">{project.tag}</p>
+            ].map((project, i) => {
+              const cardContent = (
+                <div className="group relative aspect-[4/3] rounded-[24px] overflow-hidden bg-[#1a1a1a] border border-white/5 cursor-pointer">
+                  <Image src={project.img} alt={project.title} fill className="object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute bottom-0 left-0 p-8 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                    <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
+                    <p className="text-white/60">{project.tag}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+
+              return project.link ? (
+                <a key={i} href={project.link} target="_blank" rel="noopener noreferrer" className="block">
+                  {cardContent}
+                </a>
+              ) : (
+                <div key={i}>{cardContent}</div>
+              );
+            })}
           </div>
         </div>
       </section>

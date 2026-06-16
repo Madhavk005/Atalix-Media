@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function PrintableAssets() {
   const assets = [
@@ -40,7 +41,7 @@ export default function PrintableAssets() {
                 className="group relative p-10 rounded-[32px] overflow-hidden bg-white/[0.05] border border-white/5 shadow-2xl flex flex-col justify-between aspect-square hover:bg-white/[0.08] transition-colors duration-500 cursor-pointer"
               >
                 {asset.img && (
-                  <img src={asset.img} alt={asset.title} className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-500 z-0" />
+                  <Image src={asset.img} alt={asset.title} fill className="object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-500 z-0" />
                 )}
                 {!asset.img && asset.link && (
                   <div className="absolute top-10 right-10 opacity-10 font-heading font-black text-6xl group-hover:scale-110 group-hover:opacity-20 transition-all duration-500 ease-out z-0">

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Photoshoot() {
   return (
@@ -32,7 +33,7 @@ export default function Photoshoot() {
               viewport={{ once: true }}
               className="relative rounded-3xl overflow-hidden glassmorphism-black group cursor-pointer border border-white/5 hover:border-atalix-accent/50 hover:shadow-[0_0_40px_-10px_rgba(29,161,242,0.3)] transition-all duration-500"
             >
-              <img src="/projects/FNP/Carousel/001.jpg" loading="lazy" className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt="FNP Product Photography" />
+              <Image src="/projects/FNP/Carousel/001.jpg" fill className="object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt="FNP Product Photography" />
               <div className="absolute bottom-6 left-6 pointer-events-none">
                 <p className="text-2xl font-heading font-bold uppercase drop-shadow-md">FNP Product</p>
               </div>
@@ -45,7 +46,7 @@ export default function Photoshoot() {
               transition={{ delay: 0.1 }}
               className="relative rounded-3xl overflow-hidden glassmorphism-black group cursor-pointer border border-white/5 hover:border-atalix-accent/50 hover:shadow-[0_0_40px_-10px_rgba(29,161,242,0.3)] transition-all duration-500"
             >
-              <img src="/projects/KOOK Stores/Cargo Pants Carousel/Cargo-CarouselArtboard-1.png" loading="lazy" className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt="KOOK Stores Campaigns" />
+              <Image src="/projects/KOOK Stores/Cargo Pants Carousel/Cargo-CarouselArtboard-1.png" fill className="object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt="KOOK Stores Campaigns" />
               <div className="absolute bottom-6 left-6 pointer-events-none">
                 <p className="text-2xl font-heading font-bold uppercase drop-shadow-md">KOOK Stores</p>
               </div>
@@ -66,7 +67,7 @@ export default function Photoshoot() {
                 transition={{ delay: i * 0.1 }}
                 className="relative rounded-3xl overflow-hidden glassmorphism-black group cursor-pointer border border-white/5 hover:border-atalix-accent/50 hover:shadow-[0_0_40px_-10px_rgba(29,161,242,0.3)] transition-all duration-500"
               >
-                <img src={item.img} loading="lazy" className="w-full h-full object-cover opacity-50 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700" alt={item.title} />
+                <Image src={item.img} fill className="object-cover opacity-50 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700" alt={item.title} />
                 <div className="absolute bottom-6 left-6 pointer-events-none">
                   <p className="text-xl font-heading font-bold uppercase drop-shadow-md">{item.title}</p>
                 </div>
