@@ -40,7 +40,7 @@ export default function Founders() {
               <div className="p-10 sm:w-[55%] flex flex-col justify-center">
                 <h3 className="text-3xl font-heading font-bold mb-6 uppercase tracking-tight text-white">Vansh<br/>Rai</h3>
                 <p className="text-[16px] leading-[1.6] text-white/60 font-light">
-                  While creativity gets the spotlight, Vansh Rai believes it&apos;s structure that keeps the lights on.
+                  While creativity gets the spotlight, Vansh Rai believes it&apos;s structure that keeps the lights on. While others focus on what&apos;s visible, he&apos;s focused on what keeps everything running smoothly behind the scenes. From operations, structure to client experience, his obsession is creating systems that raise the bar so high that brands notice the difference and remember it long after they&apos;ve worked with us.
                 </p>
               </div>
             </div>
@@ -66,7 +66,7 @@ export default function Founders() {
               <div className="p-10 sm:w-[55%] flex flex-col justify-center">
                 <h3 className="text-3xl font-heading font-bold mb-6 uppercase tracking-tight text-white">Arshdeep<br/>Sukhija</h3>
                 <p className="text-[16px] leading-[1.6] text-white/60 font-light">
-                  Arshdeep Sukhija didn&apos;t start Atalix Media to add another agency to the market. He started it because too many brands were still being marketed like it was yesterday.
+                  Arshdeep Sukhija didn&apos;t start Atalix Media to add another agency to the market. He started it because too many brands were still being marketed like it was yesterday. Inspired by global trends and modern creative thinking, he set out to bring a fresher, bolder perspective to the Indian market, one that values ideas as much as execution. Because sometimes, the best way to stand out is to stop doing what everyone else is doing.
                 </p>
               </div>
             </div>

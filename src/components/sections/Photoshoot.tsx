@@ -22,6 +22,9 @@ export default function Photoshoot() {
           <h2 className="text-[52px] leading-[1.1] font-heading font-bold uppercase">
             PHOTOSHOOT
           </h2>
+          <p className="mt-6 text-white/60 max-w-3xl mx-auto leading-relaxed">
+            Every photoshoot begins long before the camera starts rolling. We research your industry, study market trends, analyze competitors and develop detailed mood boards to ensure every frame serves a purpose. Whether it&apos;s cinematic product photography or brand-focused visual campaigns, we create imagery that reflects your identity, captures attention, and elevates your brand.
+          </p>
         </motion.div>
 
         {/* Minimal Gallery Layout: 2 Large Top, 3 Small Bottom */}

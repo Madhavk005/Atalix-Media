@@ -38,7 +38,7 @@ export default function About() {
               <span className="text-atalix-accent">We create them.</span>
             </h2>
             <p className="mt-8 text-[18px] md:text-[22px] text-white/60 font-light max-w-xl z-10 relative leading-[1.6]">
-              Our philosophy is rooted in challenging convention, questioning what&apos;s familiar, and creating work that feels fresh in a market crowded with repetition.
+              At Atalix Media, we don&apos;t believe creativity should follow a template. Our philosophy is rooted in challenging convention, questioning what&apos;s familiar and creating work that feels fresh in a market crowded with repetition. We combine modern thinking, bold ideas and strategic creativity to help brands communicate in ways that feel relevant today and not five years ago.
             </p>
           </motion.div>
 

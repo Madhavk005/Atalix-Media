@@ -22,7 +22,7 @@ export default function GraphicDesignService() {
           </h1>
           
           <p className="text-xl md:text-2xl text-white/60 font-light max-w-2xl leading-relaxed mb-16">
-            We don&apos;t just make things look pretty. We design visual systems that communicate value, establish trust, and convert attention into action.
+            Pretty graphics are everywhere but memorable ones are rare. We create visuals that do more than sit on a feed and look nice but also they spark curiosity, tell stories and give people a reason to stop scrolling. Every element, from typography to layout and composition, is carefully considered to make sure your brand doesn&apos;t just show up, IT STANDS OUT.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-5xl">

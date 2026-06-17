@@ -220,6 +220,43 @@ export default function Services() {
             </div>
           </motion.div>
 
+          {/* Card 6: Copywriting */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="lg:col-span-1 relative p-10 rounded-[32px] overflow-hidden bg-white/[0.02] border border-white/5 backdrop-blur-3xl group shadow-2xl flex flex-col justify-between hover:border-atalix-accent/30 transition-all cursor-pointer"
+          >
+            <Link href="/services/copywriting" className="absolute inset-0 z-50" />
+            <h3 className="text-3xl font-heading font-bold uppercase text-white tracking-tight z-30 relative">Copywriting &<br/>Content</h3>
+            <div className="mt-8 flex flex-col gap-3 z-20 relative">
+               <div className="w-full h-2 bg-white/10 rounded-full group-hover:bg-white/20 transition-colors duration-500" />
+               <div className="w-4/5 h-2 bg-white/10 rounded-full group-hover:bg-white/20 transition-colors duration-500 delay-75" />
+               <div className="w-full h-2 bg-white/10 rounded-full group-hover:bg-white/20 transition-colors duration-500 delay-150" />
+               <div className="w-2/3 h-2 bg-atalix-accent/50 rounded-full mt-2 group-hover:bg-atalix-accent transition-colors duration-500 delay-200" />
+            </div>
+          </motion.div>
+
+          {/* Card 7: Influencer Marketing */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="lg:col-span-2 relative p-10 rounded-[32px] overflow-hidden bg-white/[0.02] border border-white/5 backdrop-blur-3xl group shadow-2xl flex flex-col justify-end hover:border-atalix-accent/30 transition-all cursor-pointer"
+          >
+            <Link href="/services/influencer-marketing" className="absolute inset-0 z-50" />
+            <h3 className="text-3xl font-heading font-bold uppercase text-white tracking-tight z-30 relative">Influencer<br/>Marketing</h3>
+            <div className="absolute top-10 right-10 flex -space-x-4 z-20">
+               <div className="w-16 h-16 rounded-full border border-white/10 bg-white/5 backdrop-blur-md transition-transform duration-500 group-hover:-translate-x-2" />
+               <div className="w-16 h-16 rounded-full border border-white/10 bg-white/10 backdrop-blur-md transition-transform duration-500 group-hover:-translate-x-1" />
+               <div className="w-16 h-16 rounded-full border border-atalix-accent/30 bg-atalix-accent/20 backdrop-blur-md transition-transform duration-500 flex items-center justify-center">
+                 <div className="w-2 h-2 rounded-full bg-atalix-accent animate-pulse" />
+               </div>
+            </div>
+          </motion.div>
+
         </div>
       </div>
     </section>

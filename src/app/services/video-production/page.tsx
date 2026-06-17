@@ -22,7 +22,7 @@ export default function VideoProductionService() {
           </h1>
           
           <p className="text-xl md:text-2xl text-white/60 font-light max-w-2xl leading-relaxed mb-16">
-            Cinematic storytelling designed for the modern attention span. From high-end brand films to rapid-fire social reels.
+            Attention is earned in seconds. We create reels, shorts and brand films that blend cinematic visuals, sharp editing, thoughtful storytelling and just the right amount of creative flair. From cinematic product showcases, engaging brand stories to polished talking-head content, we create videos that feel impossible to scroll past.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-5xl">

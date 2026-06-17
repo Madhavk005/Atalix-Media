@@ -27,6 +27,9 @@ export default function PrintableAssets() {
           <h2 className="text-[52px] leading-[1.1] font-heading font-bold uppercase tracking-tight text-white max-w-xl">
             Brand Assets.
           </h2>
+          <p className="mt-6 text-white/60 max-w-3xl leading-relaxed">
+            A brand shouldn&apos;t lose its identity the moment it leaves the screen. Whether it&apos;s packaging, visiting cards, thank-you notes, newspaper insertions, hoardings, posters or flyers, every touchpoint should feel unmistakably like your brand. We carefully align colors, typography, messaging and visual aesthetics to create assets that are cohesive, memorable, and impactful.
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

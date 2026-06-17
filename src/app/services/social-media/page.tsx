@@ -22,7 +22,7 @@ export default function SocialMediaService() {
           </h1>
           
           <p className="text-xl md:text-2xl text-white/60 font-light max-w-2xl leading-relaxed mb-16">
-            We transform passive scrollers into active brand advocates through data-driven content architectures and organic growth strategies.
+            A perfectly curated feed means very little if nobody cares about what&apos;s on it. It&apos;s about creating content that reaches the right people, sparks meaningful engagement, and drives measurable growth. We combine strategy, creativity and audience insights to build social media ecosystems that not only look cohesive but also deliver results.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-5xl">

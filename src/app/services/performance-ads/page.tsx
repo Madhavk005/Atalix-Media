@@ -22,7 +22,7 @@ export default function PerformanceAdsService() {
           </h1>
           
           <p className="text-xl md:text-2xl text-white/60 font-light max-w-2xl leading-relaxed mb-16">
-            We engineer high-converting paid acquisition funnels. Combining relentless A/B testing with striking creative to maximize your Return on Ad Spend.
+            Boosting a post isn&apos;t a marketing strategy. We take a deeper approach. Before a campaign goes live, we study audiences, behaviors, locations and buying patterns to understand exactly who we&apos;re speaking to and why. Then we create structured funnels that guide potential customers from discovery to decision.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-5xl">

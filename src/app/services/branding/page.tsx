@@ -25,7 +25,7 @@ export default function BrandingService() {
           </h1>
           
           <p className="text-xl md:text-2xl text-white/60 font-light max-w-2xl leading-relaxed mb-16">
-            We don&apos;t just design logos. We build comprehensive brand architectures that dictate how the world perceives, interacts with, and remembers your business.
+            A brand is what people remember when you&apos;re not in the room. That&apos;s why branding is more than a logo, a color palette or a set of fonts. We look beyond aesthetics and focus on the bigger picture. We understand your business, study your competition, identify opportunities and uncover what makes your brand different.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-5xl">
