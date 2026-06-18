@@ -1,0 +1,126 @@
+
+> atalix-media@0.1.0 lint
+> eslint
+
+
+/Users/madhavkohli/ATALIX MEDIA/src/app/page.tsx
+  7:8  warning  'Photoshoot' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/madhavkohli/ATALIX MEDIA/src/components/sections/PrintableAssets.tsx
+  14:31  error    Error: Cannot access variable before it is declared
+
+`closeCarousel` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+/Users/madhavkohli/ATALIX MEDIA/src/components/sections/PrintableAssets.tsx:14:31
+  12 |   useEffect(() => {
+  13 |     const handleKeyDown = (e: KeyboardEvent) => {
+> 14 |       if (e.key === "Escape") closeCarousel();
+     |                               ^^^^^^^^^^^^^ `closeCarousel` accessed before it is declared
+  15 |       if (e.key === "ArrowRight") nextImage(null);
+  16 |       if (e.key === "ArrowLeft") prevImage(null);
+  17 |     };
+
+/Users/madhavkohli/ATALIX MEDIA/src/components/sections/PrintableAssets.tsx:35:3
+  33 |   };
+  34 |
+> 35 |   const closeCarousel = () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 36 |     setActiveItem(null);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 37 |     document.body.style.overflow = "auto";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 38 |   };
+     | ^^^^^ `closeCarousel` is declared here
+  39 |
+  40 |   const nextImage = (e: React.MouseEvent | null) => {
+  41 |     if (e) e.stopPropagation();                                                                                                                                                                                                                               react-hooks/immutability
+  15:35  error    Error: Cannot access variable before it is declared
+
+`nextImage` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+/Users/madhavkohli/ATALIX MEDIA/src/components/sections/PrintableAssets.tsx:15:35
+  13 |     const handleKeyDown = (e: KeyboardEvent) => {
+  14 |       if (e.key === "Escape") closeCarousel();
+> 15 |       if (e.key === "ArrowRight") nextImage(null);
+     |                                   ^^^^^^^^^ `nextImage` accessed before it is declared
+  16 |       if (e.key === "ArrowLeft") prevImage(null);
+  17 |     };
+  18 |     if (activeItem) {
+
+/Users/madhavkohli/ATALIX MEDIA/src/components/sections/PrintableAssets.tsx:40:3
+  38 |   };
+  39 |
+> 40 |   const nextImage = (e: React.MouseEvent | null) => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 41 |     if (e) e.stopPropagation();
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 42 |     if (activeItem?.type === 'images') {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 43 |       setCurrentIndex((prev) => (prev + 1) % activeItem.urls.length);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 44 |     }
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 45 |   };
+     | ^^^^^ `nextImage` is declared here
+  46 |
+  47 |   const prevImage = (e: React.MouseEvent | null) => {
+  48 |     if (e) e.stopPropagation();  react-hooks/immutability
+  16:34  error    Error: Cannot access variable before it is declared
+
+`prevImage` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+/Users/madhavkohli/ATALIX MEDIA/src/components/sections/PrintableAssets.tsx:16:34
+  14 |       if (e.key === "Escape") closeCarousel();
+  15 |       if (e.key === "ArrowRight") nextImage(null);
+> 16 |       if (e.key === "ArrowLeft") prevImage(null);
+     |                                  ^^^^^^^^^ `prevImage` accessed before it is declared
+  17 |     };
+  18 |     if (activeItem) {
+  19 |       window.addEventListener("keydown", handleKeyDown);
+
+/Users/madhavkohli/ATALIX MEDIA/src/components/sections/PrintableAssets.tsx:47:3
+  45 |   };
+  46 |
+> 47 |   const prevImage = (e: React.MouseEvent | null) => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 48 |     if (e) e.stopPropagation();
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 49 |     if (activeItem?.type === 'images') {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 50 |       setCurrentIndex((prev) => (prev - 1 + activeItem.urls.length) % activeItem.urls.length);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 51 |     }
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 52 |   };
+     | ^^^^^ `prevImage` is declared here
+  53 |
+  54 |   const assets = [
+  55 |     {                                react-hooks/immutability
+  22:6   warning  React Hook useEffect has missing dependencies: 'nextImage' and 'prevImage'. Either include them or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     react-hooks/exhaustive-deps
+  27:5   error    Error: This value cannot be modified
+
+Modifying a variable defined outside a component or hook is not allowed. Consider using an effect.
+
+/Users/madhavkohli/ATALIX MEDIA/src/components/sections/PrintableAssets.tsx:27:5
+  25 |     setActiveItem({ type: 'images', urls: images });
+  26 |     setCurrentIndex(0);
+> 27 |     document.body.style.overflow = "hidden";
+     |     ^^^^^^^^^^^^^^^^^^^ value cannot be modified
+  28 |   };
+  29 |
+  30 |   const openPdf = (url: string) => {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   react-hooks/immutability
+  32:5   error    Error: This value cannot be modified
+
+Modifying a variable defined outside a component or hook is not allowed. Consider using an effect.
+
+/Users/madhavkohli/ATALIX MEDIA/src/components/sections/PrintableAssets.tsx:32:5
+  30 |   const openPdf = (url: string) => {
+  31 |     setActiveItem({ type: 'pdf', url });
+> 32 |     document.body.style.overflow = "hidden";
+     |     ^^^^^^^^^^^^^^^^^^^ value cannot be modified
+  33 |   };
+  34 |
+  35 |   const closeCarousel = () => {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       react-hooks/immutability
+
+✖ 7 problems (5 errors, 2 warnings)
+

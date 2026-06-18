@@ -4,7 +4,7 @@ import About from "@/components/sections/About";
 import Founders from "@/components/sections/Founders";
 import Services from "@/components/sections/Services";
 import Reels from "@/components/sections/Reels";
-import Photoshoot from "@/components/sections/Photoshoot";
+
 import PrintableAssets from "@/components/sections/PrintableAssets";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";

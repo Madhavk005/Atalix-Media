@@ -2,14 +2,32 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 
 export default function Services() {
   const [activeItem, setActiveItem] = useState<{ type: 'images', urls: string[] } | { type: 'pdf', url: string } | { type: 'videos', urls: string[] } | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Close carousel on escape key
+  const closeCarousel = useCallback(() => {
+    setActiveItem(null);
+  }, []);
+
+  const nextItem = useCallback((e: React.MouseEvent | null) => {
+    if (e) e.stopPropagation();
+    if (activeItem?.type === 'images' || activeItem?.type === 'videos') {
+      setCurrentIndex((prev) => (prev + 1) % activeItem.urls.length);
+    }
+  }, [activeItem]);
+
+  const prevItem = useCallback((e: React.MouseEvent | null) => {
+    if (e) e.stopPropagation();
+    if (activeItem?.type === 'images' || activeItem?.type === 'videos') {
+      setCurrentIndex((prev) => (prev - 1 + activeItem.urls.length) % activeItem.urls.length);
+    }
+  }, [activeItem]);
+
+  // Handle keyboard events and body overflow
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeCarousel();
@@ -18,44 +36,27 @@ export default function Services() {
     };
     if (activeItem) {
       window.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
     }
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activeItem]);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeItem, closeCarousel, nextItem, prevItem]);
 
   const openImages = (urls: string[]) => {
     setActiveItem({ type: 'images', urls });
     setCurrentIndex(0);
-    document.body.style.overflow = "hidden";
   };
 
   const openVideos = (urls: string[]) => {
     setActiveItem({ type: 'videos', urls });
     setCurrentIndex(0);
-    document.body.style.overflow = "hidden";
   };
 
   const openPdf = (url: string) => {
     setActiveItem({ type: 'pdf', url });
-    document.body.style.overflow = "hidden";
-  };
-
-  const closeCarousel = () => {
-    setActiveItem(null);
-    document.body.style.overflow = "auto";
-  };
-
-  const nextItem = (e: React.MouseEvent | null) => {
-    if (e) e.stopPropagation();
-    if (activeItem?.type === 'images' || activeItem?.type === 'videos') {
-      setCurrentIndex((prev) => (prev + 1) % activeItem.urls.length);
-    }
-  };
-
-  const prevItem = (e: React.MouseEvent | null) => {
-    if (e) e.stopPropagation();
-    if (activeItem?.type === 'images' || activeItem?.type === 'videos') {
-      setCurrentIndex((prev) => (prev - 1 + activeItem.urls.length) % activeItem.urls.length);
-    }
   };
 
   // Media Data

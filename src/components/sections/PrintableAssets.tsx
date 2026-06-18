@@ -2,13 +2,31 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export default function PrintableAssets() {
   const [activeItem, setActiveItem] = useState<{ type: 'images', urls: string[] } | { type: 'pdf', url: string } | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Close carousel on escape key
+  const closeCarousel = useCallback(() => {
+    setActiveItem(null);
+  }, []);
+
+  const nextImage = useCallback((e: React.MouseEvent | null) => {
+    if (e) e.stopPropagation();
+    if (activeItem?.type === 'images') {
+      setCurrentIndex((prev) => (prev + 1) % activeItem.urls.length);
+    }
+  }, [activeItem]);
+
+  const prevImage = useCallback((e: React.MouseEvent | null) => {
+    if (e) e.stopPropagation();
+    if (activeItem?.type === 'images') {
+      setCurrentIndex((prev) => (prev - 1 + activeItem.urls.length) % activeItem.urls.length);
+    }
+  }, [activeItem]);
+
+  // Handle keyboard events and body overflow
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeCarousel();
@@ -17,38 +35,22 @@ export default function PrintableAssets() {
     };
     if (activeItem) {
       window.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
     }
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activeItem]);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeItem, closeCarousel, nextImage, prevImage]);
 
   const openCarousel = (images: string[]) => {
     setActiveItem({ type: 'images', urls: images });
     setCurrentIndex(0);
-    document.body.style.overflow = "hidden";
   };
 
   const openPdf = (url: string) => {
     setActiveItem({ type: 'pdf', url });
-    document.body.style.overflow = "hidden";
-  };
-
-  const closeCarousel = () => {
-    setActiveItem(null);
-    document.body.style.overflow = "auto";
-  };
-
-  const nextImage = (e: React.MouseEvent | null) => {
-    if (e) e.stopPropagation();
-    if (activeItem?.type === 'images') {
-      setCurrentIndex((prev) => (prev + 1) % activeItem.urls.length);
-    }
-  };
-
-  const prevImage = (e: React.MouseEvent | null) => {
-    if (e) e.stopPropagation();
-    if (activeItem?.type === 'images') {
-      setCurrentIndex((prev) => (prev - 1 + activeItem.urls.length) % activeItem.urls.length);
-    }
   };
 
   const assets = [
