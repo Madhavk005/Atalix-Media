@@ -9,19 +9,30 @@ export default function Contact() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#56C8FF] opacity-[0.03] rounded-full blur-[150px] pointer-events-none" />
 
       <div className="container px-6 md:px-12 mx-auto relative z-10">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, filter: "blur(10px)" }}
           whileInView={{ opacity: 1, filter: "blur(0px)" }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="mb-20"
+          className="mb-8"
         >
-          <h2 className="text-[52px] md:text-[72px] leading-[1] font-heading font-black uppercase tracking-tighter text-white max-w-2xl">
-            LET&apos;S BUILD<br />SOMETHING<br />AMAZING.
-          </h2>
+          <span className="text-[13px] font-medium tracking-widest text-atalix-accent uppercase block">
+            Get In Touch
+          </span>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 lg:gap-16">
+        <motion.h2 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] leading-[1.1] font-heading font-bold tracking-tight uppercase text-white"
+        >
+          Let&apos;s Build <br className="hidden md:block"/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-atalix-accent to-white">Something Amazing.</span>
+        </motion.h2>
+
+        <div className="mt-20 md:mt-32 grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 lg:gap-16">
           
           {/* Left Info Bento */}
           <motion.div 

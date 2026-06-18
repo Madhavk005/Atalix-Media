@@ -19,7 +19,7 @@ export default function Home() {
       <Founders />
       <Services />
       <Reels />
-      <Photoshoot />
+      {/* <Photoshoot /> */}
       <PrintableAssets />
       <Contact />
       <Footer />

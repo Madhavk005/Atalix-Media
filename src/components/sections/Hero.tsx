@@ -99,7 +99,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 40, filter: "blur(20px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-          className="max-w-[300px]"
+          className="max-w-[300px] flex flex-col items-end md:items-start"
         >
           <p className="text-[22px] font-semibold leading-[1.2] text-right md:text-left text-white/90">
             Creative content<br />
@@ -107,6 +107,19 @@ export default function Hero() {
             that refuse<br />
             to look <span className="text-transparent bg-clip-text bg-gradient-to-r from-atalix-accent to-white font-bold">ordinary.</span>
           </p>
+
+          <div className="mt-8">
+            <a 
+              href="https://drive.google.com/drive/folders/1PR2MvqSeSk4n_AG012VHqoDsrEwiW3gs?usp=sharing" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group relative px-6 py-3 rounded-[999px] overflow-hidden bg-white/5 text-white font-bold tracking-widest uppercase text-[11px] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(29,161,242,0.3)] border border-white/20 hover:border-atalix-accent backdrop-blur-md inline-flex items-center gap-3"
+            >
+              <div className="absolute inset-0 bg-atalix-accent translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]" />
+              <span className="relative z-10">See Our Work</span>
+              <span className="relative z-10 group-hover:translate-x-1 transition-transform duration-300">&rarr;</span>
+            </a>
+          </div>
         </motion.div>
       </div>
 

@@ -1,29 +1,108 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function Services() {
+  const [activeItem, setActiveItem] = useState<{ type: 'images', urls: string[] } | { type: 'pdf', url: string } | { type: 'videos', urls: string[] } | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Close carousel on escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeCarousel();
+      if (e.key === "ArrowRight") nextItem(null);
+      if (e.key === "ArrowLeft") prevItem(null);
+    };
+    if (activeItem) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeItem]);
+
+  const openImages = (urls: string[]) => {
+    setActiveItem({ type: 'images', urls });
+    setCurrentIndex(0);
+    document.body.style.overflow = "hidden";
+  };
+
+  const openVideos = (urls: string[]) => {
+    setActiveItem({ type: 'videos', urls });
+    setCurrentIndex(0);
+    document.body.style.overflow = "hidden";
+  };
+
+  const openPdf = (url: string) => {
+    setActiveItem({ type: 'pdf', url });
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeCarousel = () => {
+    setActiveItem(null);
+    document.body.style.overflow = "auto";
+  };
+
+  const nextItem = (e: React.MouseEvent | null) => {
+    if (e) e.stopPropagation();
+    if (activeItem?.type === 'images' || activeItem?.type === 'videos') {
+      setCurrentIndex((prev) => (prev + 1) % activeItem.urls.length);
+    }
+  };
+
+  const prevItem = (e: React.MouseEvent | null) => {
+    if (e) e.stopPropagation();
+    if (activeItem?.type === 'images' || activeItem?.type === 'videos') {
+      setCurrentIndex((prev) => (prev - 1 + activeItem.urls.length) % activeItem.urls.length);
+    }
+  };
+
+  // Media Data
+  const graphicImages = [
+    "/projects/KOOK Stores/Website Carousel/001.jpeg",
+    "/projects/KOOK Stores/Website Carousel/002.jpg",
+    "/projects/KOOK Stores/Website Carousel/003.jpg",
+    "/projects/KOOK Stores/Website Carousel/004.jpg",
+    "/projects/KOOK Stores/Website Carousel/005.jpg",
+  ];
+
+  const reelVideos = [
+    "/projects/Valedora/Valentine's Day Reel.mp4",
+    "/projects/FNP/Reel 01.mp4",
+    "/projects/KOOK Stores/KOOK Stores Logo Animation.mp4",
+    "/projects/Beyond Bricks/BB Buyer Access Pass.mp4",
+    "/projects/KOOK Stores/Cargo Pants Difference Reel.mp4"
+  ];
+
   return (
     <section id="services" className="relative py-32 w-full bg-[#1E1E1E] overflow-hidden">
       <div className="container px-6 md:px-12 mx-auto">
-        <motion.div 
-          initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
-          whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+        <motion.div
+          initial={{ opacity: 0, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, filter: "blur(0px)" }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-16"
+          transition={{ duration: 1 }}
+          className="mb-8"
         >
-          <span className="text-[13px] font-medium tracking-widest text-white/50 uppercase mb-4 block">
+          <span className="text-[13px] font-medium tracking-widest text-atalix-accent uppercase block">
             What We Do
           </span>
-          <h2 className="text-[52px] leading-[1.1] font-heading font-bold uppercase max-w-xl text-white">
-            Creative Services<br />That Drive Results.
-          </h2>
         </motion.div>
 
+        <motion.h2 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] leading-[1.1] font-heading font-bold tracking-tight uppercase text-white"
+        >
+          Creative Services<br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-atalix-accent to-white">That Drive Results.</span>
+        </motion.h2>
+
         {/* Complete Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[320px]">
+        <div className="mt-20 md:mt-32 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[320px]">
           
           {/* Card 1: Branding */}
           <motion.div 
@@ -31,9 +110,9 @@ export default function Services() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
+            onClick={() => openPdf("/projects/Beyond Bricks/Beyond Bricks Brand Guidelines.pdf")}
             className="lg:col-span-2 relative p-10 rounded-[32px] overflow-hidden bg-white/[0.02] border border-white/5 backdrop-blur-3xl group shadow-2xl hover:border-atalix-accent/30 transition-all cursor-pointer"
           >
-            <Link href="/services/branding" className="absolute inset-0 z-50" />
             <div className="absolute inset-0 p-10 flex flex-col justify-between z-20">
               <h3 className="text-4xl font-heading font-bold uppercase text-white tracking-tight">Branding</h3>
               <div className="flex items-center gap-4 text-white/50 text-[13px] font-medium tracking-widest uppercase">
@@ -61,9 +140,9 @@ export default function Services() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
+            onClick={() => openVideos(reelVideos)}
             className="lg:col-span-1 relative p-10 rounded-[32px] overflow-hidden bg-white/[0.02] border border-white/5 backdrop-blur-3xl group shadow-2xl hover:border-atalix-accent/30 transition-all cursor-pointer"
           >
-            <Link href="/services/video-production" className="absolute inset-0 z-50" />
             <div className="absolute inset-0 z-0">
               <video 
                 autoPlay 
@@ -92,9 +171,9 @@ export default function Services() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            onClick={() => openImages(graphicImages)}
             className="lg:col-span-1 relative p-10 rounded-[32px] overflow-hidden bg-white/[0.02] border border-white/5 backdrop-blur-3xl group shadow-2xl hover:border-atalix-accent/30 transition-all cursor-pointer"
           >
-            <Link href="/services/graphic-design" className="absolute inset-0 z-50" />
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none mt-8">
                {/* Stacked Posters */}
                <div className="w-40 h-52 bg-white/5 border border-white/10 rounded-2xl absolute transform -rotate-6 transition-all duration-700 ease-[0.16,1,0.3,1] group-hover:-translate-x-16 group-hover:-rotate-12 group-hover:scale-105 shadow-2xl backdrop-blur-sm" />
@@ -259,6 +338,102 @@ export default function Services() {
 
         </div>
       </div>
+
+      {/* Fullscreen Carousel Lightbox */}
+      <AnimatePresence>
+        {activeItem && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center"
+            onClick={closeCarousel}
+          >
+            {/* Close Button */}
+            <button 
+              className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors z-[110] bg-black/50 p-2 rounded-full"
+              onClick={(e) => { e.stopPropagation(); closeCarousel(); }}
+            >
+              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+
+            {(activeItem.type === 'images' || activeItem.type === 'videos') && (
+              <>
+                {/* Prev Button */}
+                <button 
+                  className="absolute left-4 md:left-12 p-4 text-white/50 hover:text-white transition-colors z-[110]"
+                  onClick={prevItem}
+                >
+                  <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" /></svg>
+                </button>
+
+                {/* Media Container */}
+                <div 
+                  className="relative w-[90vw] h-[80vh] md:w-[80vw] md:h-[85vh] flex items-center justify-center"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentIndex}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 1.05 }}
+                      transition={{ duration: 0.4 }}
+                      className="relative w-full h-full flex items-center justify-center"
+                    >
+                      {activeItem.type === 'images' ? (
+                        <Image 
+                          src={activeItem.urls[currentIndex]} 
+                          alt={`Carousel media ${currentIndex + 1}`} 
+                          fill 
+                          className="object-contain drop-shadow-2xl" 
+                        />
+                      ) : (
+                        <video 
+                          src={activeItem.urls[currentIndex]} 
+                          autoPlay 
+                          controls
+                          loop 
+                          playsInline 
+                          className="max-w-full max-h-full rounded-2xl shadow-2xl"
+                        />
+                      )}
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+
+                {/* Next Button */}
+                <button 
+                  className="absolute right-4 md:right-12 p-4 text-white/50 hover:text-white transition-colors z-[110]"
+                  onClick={nextItem}
+                >
+                  <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" /></svg>
+                </button>
+                
+                {/* Indicators */}
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3 z-[110]" onClick={(e) => e.stopPropagation()}>
+                  {activeItem.urls.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentIndex(idx)}
+                      className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === currentIndex ? "bg-atalix-accent scale-125" : "bg-white/30 hover:bg-white/50"}`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
+
+            {activeItem.type === 'pdf' && (
+              <div 
+                className="relative w-[90vw] h-[90vh] md:w-[70vw] md:h-[90vh] flex flex-col items-center justify-center rounded-[24px] overflow-hidden bg-white mt-8"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <iframe src={activeItem.url} className="w-full h-full border-none" />
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

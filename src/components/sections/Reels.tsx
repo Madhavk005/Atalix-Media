@@ -20,20 +20,29 @@ export default function Reels() {
       {/* Background glow for context */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-atalix-accent opacity-10 blur-[150px] pointer-events-none" />
 
-      <div className="container px-6 md:px-12 mx-auto relative z-10 mb-16">
+      <div className="container px-6 md:px-12 mx-auto relative z-10 mb-20 md:mb-32">
         <motion.div
-          initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
-          whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+          initial={{ opacity: 0, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, filter: "blur(0px)" }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
+          className="mb-8"
         >
-          <span className="text-[13px] font-medium tracking-widest text-white/50 uppercase mb-4 block">
+          <span className="text-[13px] font-medium tracking-widest text-atalix-accent uppercase block">
             Featured Work
           </span>
-          <h2 className="text-[52px] md:text-[72px] leading-[0.9] font-heading font-black tracking-tighter uppercase text-white">
-            REEL FIRST<br />EXPERIENCE.
-          </h2>
         </motion.div>
+
+        <motion.h2 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] leading-[1.1] font-heading font-bold tracking-tight uppercase text-white"
+        >
+          Reel First <br className="hidden md:block"/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-atalix-accent to-white">Experience.</span>
+        </motion.h2>
       </div>
 
       {/* Infinite Horizontal Sliding Area */}
@@ -58,12 +67,19 @@ export default function Reels() {
               <div className="absolute inset-0 border border-white/5 rounded-[32px] pointer-events-none z-20" />
               
               <video 
-                src={cat.video} 
+                src={`${cat.video}#t=0.001`} 
                 muted 
                 loop 
                 playsInline 
-                preload="none"
-                onMouseEnter={(e) => e.currentTarget.play()}
+                preload="metadata"
+                onMouseEnter={(e) => {
+                  const playPromise = e.currentTarget.play();
+                  if (playPromise !== undefined) {
+                    playPromise.catch(() => {
+                      // Ignore the play() interruption error when pause() is called quickly
+                    });
+                  }
+                }}
                 onMouseLeave={(e) => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }}
                 className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-[0.16,1,0.3,1] z-0"
               />

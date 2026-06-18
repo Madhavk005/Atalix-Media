@@ -11,24 +11,40 @@ export default function Photoshoot() {
 
       <div className="container px-6 md:px-12 mx-auto relative z-10">
         <motion.div
+          initial={{ opacity: 0, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, filter: "blur(0px)" }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="mb-8"
+        >
+          <span className="text-[13px] font-medium tracking-widest text-atalix-accent uppercase block">
+            Visual Storytelling
+          </span>
+        </motion.div>
+
+        <motion.h2 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-[7vw] leading-[1.1] font-heading font-bold tracking-tight uppercase text-white"
+        >
+          Photo<br className="hidden md:block"/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-atalix-accent to-white">Shoot.</span>
+        </motion.h2>
+
+        <motion.p 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 text-center"
+          transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+          className="mt-12 text-lg md:text-xl font-light text-white/60 max-w-3xl leading-[1.6]"
         >
-          <span className="text-xs font-medium tracking-widest text-white/50 uppercase mb-4 block">
-            Visual Storytelling
-          </span>
-          <h2 className="text-[52px] leading-[1.1] font-heading font-bold uppercase">
-            PHOTOSHOOT
-          </h2>
-          <p className="mt-6 text-white/60 max-w-3xl mx-auto leading-relaxed">
-            Every photoshoot begins long before the camera starts rolling. We research your industry, study market trends, analyze competitors and develop detailed mood boards to ensure every frame serves a purpose. Whether it&apos;s cinematic product photography or brand-focused visual campaigns, we create imagery that reflects your identity, captures attention, and elevates your brand.
-          </p>
-        </motion.div>
+          Every photoshoot begins long before the camera starts rolling. We research your industry, study market trends, analyze competitors and develop detailed mood boards to ensure every frame serves a purpose. Whether it&apos;s cinematic product photography or brand-focused visual campaigns, we create imagery that reflects your identity, captures attention, and elevates your brand.
+        </motion.p>
 
         {/* Minimal Gallery Layout: 2 Large Top, 3 Small Bottom */}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 mt-20 md:mt-32">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-[400px]">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
