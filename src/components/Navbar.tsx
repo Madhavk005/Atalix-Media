@@ -27,10 +27,16 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Right: CTA Button */}
-        <div className="pointer-events-auto">
+        {/* Right: Navigation & CTA Button */}
+        <div className="pointer-events-auto flex items-center gap-6 md:gap-8">
           <Link 
-            href="/#contact" 
+            href="/about" 
+            className="text-[12px] md:text-[13px] font-bold tracking-wide text-white/80 hover:text-white transition-colors"
+          >
+            ABOUT US
+          </Link>
+          <Link 
+            href="/contact" 
             className="px-[28px] py-[14px] rounded-[999px] bg-white text-black text-[13px] font-bold tracking-wide transition-all duration-300 inline-block hover:bg-atalix-accent hover:text-white hover:shadow-[0_0_30px_rgba(29,161,242,0.35)] hover:scale-[1.03]"
           >
             Get In Touch

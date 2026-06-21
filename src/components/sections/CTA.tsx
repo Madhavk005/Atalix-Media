@@ -32,7 +32,7 @@ export default function CTA() {
             Whether you need a complete brand overhaul, high-end video production, or a data-driven performance campaign—we&apos;re ready to execute.
           </p>
 
-          <Link href="/#contact" className="group/btn relative px-10 py-5 rounded-[999px] overflow-hidden bg-white text-black font-bold tracking-widest uppercase text-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(29,161,242,0.4)] border border-transparent hover:border-atalix-accent hover:text-white">
+          <Link href="/contact" className="group/btn relative px-10 py-5 rounded-[999px] overflow-hidden bg-white text-black font-bold tracking-widest uppercase text-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(29,161,242,0.4)] border border-transparent hover:border-atalix-accent hover:text-white">
             <div className="absolute inset-0 bg-atalix-accent translate-y-[100%] group-hover/btn:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]" />
             <span className="relative z-10 flex items-center gap-3 transition-colors duration-300">
               Start Your Project

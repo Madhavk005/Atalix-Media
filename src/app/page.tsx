@@ -1,7 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/sections/Hero";
-import About from "@/components/sections/About";
-import Founders from "@/components/sections/Founders";
 import Services from "@/components/sections/Services";
 import Reels from "@/components/sections/Reels";
 
@@ -15,8 +13,6 @@ export default function Home() {
     <main className="min-h-screen bg-atalix-bg-primary overflow-hidden">
       <Navbar />
       <Hero />
-      <About />
-      <Founders />
       <Services />
       <Reels />
       {/* <Photoshoot /> */}
