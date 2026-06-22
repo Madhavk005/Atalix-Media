@@ -4,9 +4,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import { socialMediaImages } from "@/data/socialMedia";
 
 export default function Services() {
-  const [activeItem, setActiveItem] = useState<{ type: 'images', urls: string[] } | { type: 'pdf', url: string } | { type: 'videos', urls: string[] } | null>(null);
+  const [activeItem, setActiveItem] = useState<{ type: 'images', urls: string[] } | { type: 'pdf', url: string } | { type: 'videos', urls: string[] } | { type: 'scripts', scripts: {title: string, content: string}[] } | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const closeCarousel = useCallback(() => {
@@ -17,6 +18,8 @@ export default function Services() {
     if (e) e.stopPropagation();
     if (activeItem?.type === 'images' || activeItem?.type === 'videos') {
       setCurrentIndex((prev) => (prev + 1) % activeItem.urls.length);
+    } else if (activeItem?.type === 'scripts') {
+      setCurrentIndex((prev) => (prev + 1) % activeItem.scripts.length);
     }
   }, [activeItem]);
 
@@ -24,6 +27,8 @@ export default function Services() {
     if (e) e.stopPropagation();
     if (activeItem?.type === 'images' || activeItem?.type === 'videos') {
       setCurrentIndex((prev) => (prev - 1 + activeItem.urls.length) % activeItem.urls.length);
+    } else if (activeItem?.type === 'scripts') {
+      setCurrentIndex((prev) => (prev - 1 + activeItem.scripts.length) % activeItem.scripts.length);
     }
   }, [activeItem]);
 
@@ -59,6 +64,11 @@ export default function Services() {
     setActiveItem({ type: 'pdf', url });
   };
 
+  const openScripts = (scripts: {title: string, content: string}[]) => {
+    setActiveItem({ type: 'scripts', scripts });
+    setCurrentIndex(0);
+  };
+
   // Media Data
   const graphicImages = [
     "/projects/KOOK Stores/Website Carousel/001.jpeg",
@@ -74,6 +84,173 @@ export default function Services() {
     "/projects/KOOK Stores/KOOK Stores Logo Animation.mp4",
     "/projects/Beyond Bricks/BB Buyer Access Pass.mp4",
     "/projects/KOOK Stores/Cargo Pants Difference Reel.mp4"
+  ];
+
+  const copywritingScripts = [
+    {
+      title: "Concept 5: Kook Stores",
+      content: `Hook: (Both founders in frame, walking or sitting casually)
+“We’ve always been very different with what we wore.”
+
+(Founder 1 in a stylish outfit, Founder 2 in relaxed and basic outfit)
+“One of us cared more about how it looked…”
+“And the other just wanted to feel comfortable.”
+
+(Subtle sleeve/collar adjustment, Mirror glance, slight pause)
+“But either way… something was always off and not satisfied.”
+
+(Both sitting side by side, discussing the idea)
+“Until we thought… Why are we settling for this?”
+
+(Cinematic shots of fabric selection, catalog flip, discussing ideas, checking material)
+“So we changed it and made something that feels both comfy and stylish at the same time.”
+“This is why we started.”
+
+”Kook Stores”
+CTA: “Where you don’t have to choose.”`
+    },
+    {
+      title: "Product Reel: Jitesh Fabrics",
+      content: `Before the product reaches your retail shop
+a lot happens behind it
+
+At Jitesh Fabrics
+every product goes through a complete process before dispatch
+
+From fabric selection
+to stitching
+to fitting
+to finishing
+to final quality checking
+every stage is handled carefully
+
+From styles to sizes and even customization
+everything is prepared according to your requirements
+
+We focus on better fabric quality
+clean finishing
+proper fitting
+flexible bulk ordering
+and timely dispatch
+
+So if you’re looking for a reliable sportswear manufacturing partner
+connect with Jitesh Fabrics`
+    },
+    {
+      title: "Cargo Half Pants Reel: Jitesh Fabrics",
+      content: `In summers, are you looking for something comfortable yet stylish?
+
+Then meet our newly launched Cargo Half Pants
+
+With a lightweight feel
+easy all-day comfort
+utility pockets that actually work
+and a fit that feels just right
+
+Whether it’s for sports
+daily activities
+or all-day wear
+It stays comfortable throughout
+
+The relaxed fit keeps everything easy and breathable
+while the cargo detailing adds a sharper sporty look
+
+Made for people who like comfort
+without compromising on style
+
+And if you’re a retailer or sportswear brand looking for products like this
+connect with Jitesh Fabrics for your bulk requirements`
+    },
+    {
+      title: "Fabric Test Reel: Jitesh Fabrics",
+      content: `Hey, do you know why good sportswear feels different while playing?
+
+Because it’s not just about the look
+it’s about the fabric behind it
+
+A good sportswear fabric should feel lightweight
+move easily with you
+dry sweat faster
+and stay comfortable throughout
+
+That’s why we focus on fabrics that are built for movement and performance
+
+From stretch to sweat movement to comfort
+every detail matters
+
+Because good sportswear should perform as good as it looks
+
+And if you’re a retailer or a sportswear brand looking for products like this
+connect with Jitesh Fabrics for your bulk requirements
+
+Jitesh Fabrics
+Built for everyday comfort`
+    },
+    {
+      title: "Storytelling: Real Estate Deal",
+      content: `HOOK: "So here’s a story about the deal I almost lost... and what it taught me that I now tell every single client."
+
+A few years ago, I was working with a buyer and together we found their dream home.
+The offer was ready, paperwork was done and everything was set.
+
+But then things started to change.
+The buyer began second-guessing the decision.
+Because there were too many opinions coming from friends, family and outsiders.
+And before we knew it, we were close to losing the deal.
+
+That's when I learned something important.
+
+The first step is to understand your goals, budget and your lifestyle.
+
+Because when you know exactly what you're looking for, outside opinions become less important
+And that's a lesson I've carried into every deal.
+
+So if you're planning to buy a home DM "HOME" and let's understand your needs."`
+    },
+    {
+      title: "Storytelling: Closing Night",
+      content: `HOOK: "A client called me in tears the night before closing. And here's what happened."
+
+"Months earlier, we had sat together, discussed his budget, shortlisted the right communities, gone through multiple showings and spent weeks finding the right home.
+Eventually, we found the one, we completed the paperwork and the closing date was also set.
+
+Until I got a call late that night.
+
+And honestly, he was panicking.
+
+Actually a paperwork issue had come up, and he thought the entire deal was about to fall apart.
+And everything we had done, now all in vain.
+So that night, we worked through the issue, stayed in touch with everyone involved and made sure nothing was left unanswered.
+
+The next day, he got the keys.
+And today, he's living in that same home with his family happily and never faced any issue related to it.
+
+That's what Beyond Bricks is about.
+We don’t just give options of houses instead we are always there by your side.
+So if you're planning to buy a home this year, DM us 'HOME' and let's have a conversation."`
+    },
+    {
+      title: "Father’s Day: Real Estate",
+      content: `HOOK: "People often ask me why I got into real estate.
+I never really give the complete answer but today is the day I want to."
+
+"I grew up watching my father doin the same business.
+And what I remember most isn't the houses he sold.
+It's the people he helped.
+
+I watched him taking calls late at night, sitting with families who were nervous, helping them to find their dream home and how much trust people placed in him.
+
+That's where I learned something that still stays with me today.
+
+Real estate isn't about homes.
+It's about people and what matters even more is helping someone find a place where they'll build memories, raise a family, and create a life of their own in a small house.
+
+So this Father's Day, I'm grateful to him.
+Not just for everything he taught me about real estate.
+But for everything he taught me about people.
+
+Happy Father's Day to all the dads who continue to be an inspiration for their children."`
+    }
   ];
 
   return (
@@ -188,13 +365,13 @@ export default function Services() {
 
           {/* Card 4: Social Media */}
           <motion.div 
+            onClick={() => openImages(socialMediaImages)}
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className="row-span-2 md:col-span-2 lg:col-span-2 lg:row-span-2 relative p-12 md:p-14 rounded-[32px] overflow-hidden bg-[#252525] border border-white/5 backdrop-blur-3xl group shadow-2xl flex flex-col justify-end hover:border-atalix-accent/30 transition-all cursor-pointer"
           >
-            <Link href="/services/social-media" className="absolute inset-0 z-50" />
             {/* Animated Aurora Glow */}
             <div 
               className="absolute inset-0 pointer-events-none z-0 opacity-50 group-hover:opacity-100 transition-opacity duration-700"
@@ -306,9 +483,10 @@ export default function Services() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.5 }}
+            onClick={() => openScripts(copywritingScripts)}
             className="lg:col-span-1 relative p-10 rounded-[32px] overflow-hidden bg-white/[0.02] border border-white/5 backdrop-blur-3xl group shadow-2xl flex flex-col justify-between hover:border-atalix-accent/30 transition-all cursor-pointer"
           >
-            <Link href="/services/copywriting" className="absolute inset-0 z-50" />
+            <div className="absolute inset-0 z-50 pointer-events-none" />
             <h3 className="text-3xl font-heading font-bold uppercase text-white tracking-tight z-30 relative">Copywriting &<br/>Content</h3>
             <div className="mt-8 flex flex-col gap-3 z-20 relative">
                <div className="w-full h-2 bg-white/10 rounded-full group-hover:bg-white/20 transition-colors duration-500" />
@@ -412,14 +590,20 @@ export default function Services() {
                 </button>
                 
                 {/* Indicators */}
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3 z-[110]" onClick={(e) => e.stopPropagation()}>
-                  {activeItem.urls.map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentIndex(idx)}
-                      className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === currentIndex ? "bg-atalix-accent scale-125" : "bg-white/30 hover:bg-white/50"}`}
-                    />
-                  ))}
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center justify-center gap-3 z-[110] w-[90vw] flex-wrap" onClick={(e) => e.stopPropagation()}>
+                  {activeItem.urls.length > 15 ? (
+                    <div className="text-white/80 text-sm font-medium tracking-widest bg-black/50 px-5 py-2.5 rounded-full backdrop-blur-md border border-white/10">
+                      {currentIndex + 1} / {activeItem.urls.length}
+                    </div>
+                  ) : (
+                    activeItem.urls.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setCurrentIndex(idx)}
+                        className={`w-2.5 h-2.5 shrink-0 rounded-full transition-all duration-300 ${idx === currentIndex ? "bg-atalix-accent scale-125" : "bg-white/30 hover:bg-white/50"}`}
+                      />
+                    ))
+                  )}
                 </div>
               </>
             )}
@@ -431,6 +615,66 @@ export default function Services() {
               >
                 <iframe src={activeItem.url} className="w-full h-full border-none" />
               </div>
+            )}
+
+            {activeItem.type === 'scripts' && (
+              <>
+                {/* Prev Button */}
+                <button 
+                  className="absolute left-4 md:left-12 p-4 text-white/50 hover:text-white transition-colors z-[110]"
+                  onClick={prevItem}
+                >
+                  <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" /></svg>
+                </button>
+
+                {/* Media Container */}
+                <div 
+                  className="relative w-[90vw] md:w-[60vw] max-h-[85vh] flex items-center justify-center mt-8 pointer-events-none"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentIndex}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className="w-full max-h-[85vh] p-8 md:p-14 bg-[#1a1a1a]/95 backdrop-blur-3xl border border-white/10 rounded-[32px] shadow-2xl flex flex-col pointer-events-auto"
+                      data-lenis-prevent
+                    >
+                      <h3 className="text-2xl md:text-4xl font-heading font-bold text-white mb-6 uppercase tracking-wide border-b border-white/10 pb-6 shrink-0">
+                        {activeItem.scripts[currentIndex].title}
+                      </h3>
+                      <div 
+                        className="text-white/80 text-base md:text-lg lg:text-xl leading-relaxed whitespace-pre-wrap font-light overflow-y-auto overscroll-contain pb-8 pr-4"
+                        style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}
+                        data-lenis-prevent
+                      >
+                        {activeItem.scripts[currentIndex].content}
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+
+                {/* Next Button */}
+                <button 
+                  className="absolute right-4 md:right-12 p-4 text-white/50 hover:text-white transition-colors z-[110]"
+                  onClick={nextItem}
+                >
+                  <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" /></svg>
+                </button>
+                
+                {/* Indicators */}
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3 z-[110]" onClick={(e) => e.stopPropagation()}>
+                  {activeItem.scripts.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentIndex(idx)}
+                      className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === currentIndex ? "bg-atalix-accent scale-125" : "bg-white/30 hover:bg-white/50"}`}
+                    />
+                  ))}
+                </div>
+              </>
             )}
           </motion.div>
         )}

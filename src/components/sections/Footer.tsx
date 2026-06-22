@@ -63,8 +63,11 @@ export default function Footer() {
 
           {/* Right */}
           <div className="flex flex-col gap-3 items-center lg:items-end text-center lg:text-right uppercase tracking-widest text-[11px]">
-             <a href="https://instagram.com/atalixmedia" target="_blank" rel="noreferrer" className="text-white hover:text-atalix-accent transition-colors flex items-center gap-2">
+             <a href="https://www.instagram.com/atalixmedia?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noreferrer" className="text-white hover:text-atalix-accent transition-colors flex items-center gap-2">
               Follow us on Instagram <span className="text-atalix-accent">&rarr;</span>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61590335791616" target="_blank" rel="noreferrer" className="text-white hover:text-atalix-accent transition-colors flex items-center gap-2">
+              Follow us on Facebook <span className="text-atalix-accent">&rarr;</span>
             </a>
             <span>&copy; {new Date().getFullYear()} ATALIX Media. All rights reserved.</span>
           </div>

@@ -44,8 +44,14 @@ export default function Contact() {
           >
             <div className="flex flex-col gap-2">
               <span className="text-[11px] font-semibold tracking-widest text-white/40 uppercase">Instagram</span>
-              <a href="https://instagram.com/atalixmedia" target="_blank" rel="noreferrer" className="text-xl font-medium text-white/80 hover:text-atalix-accent transition-colors">
+              <a href="https://www.instagram.com/atalixmedia?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noreferrer" className="text-xl font-medium text-white/80 hover:text-atalix-accent transition-colors">
                 @atalixmedia
+              </a>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="text-[11px] font-semibold tracking-widest text-white/40 uppercase">Facebook</span>
+              <a href="https://www.facebook.com/profile.php?id=61590335791616" target="_blank" rel="noreferrer" className="text-xl font-medium text-white/80 hover:text-atalix-accent transition-colors">
+                Atalix Media
               </a>
             </div>
             <div className="flex flex-col gap-2">

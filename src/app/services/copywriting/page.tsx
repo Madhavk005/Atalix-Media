@@ -4,6 +4,172 @@ import StickyCTA from "@/components/StickyCTA";
 import CTA from "@/components/sections/CTA";
 import Link from "next/link";
 
+const scripts = [
+  {
+    title: "Concept 5: Kook Stores",
+    content: `Hook: (Both founders in frame, walking or sitting casually)
+“We’ve always been very different with what we wore.”
+
+(Founder 1 in a stylish outfit, Founder 2 in relaxed and basic outfit)
+“One of us cared more about how it looked…”
+“And the other just wanted to feel comfortable.”
+
+(Subtle sleeve/collar adjustment, Mirror glance, slight pause)
+“But either way… something was always off and not satisfied.”
+
+(Both sitting side by side, discussing the idea)
+“Until we thought… Why are we settling for this?”
+
+(Cinematic shots of fabric selection, catalog flip, discussing ideas, checking material)
+“So we changed it and made something that feels both comfy and stylish at the same time.”
+“This is why we started.”
+
+”Kook Stores”
+CTA: “Where you don’t have to choose.”`
+  },
+  {
+    title: "Product Reel: Jitesh Fabrics",
+    content: `Before the product reaches your retail shop
+a lot happens behind it
+
+At Jitesh Fabrics
+every product goes through a complete process before dispatch
+
+From fabric selection
+to stitching
+to fitting
+to finishing
+to final quality checking
+every stage is handled carefully
+
+From styles to sizes and even customization
+everything is prepared according to your requirements
+
+We focus on better fabric quality
+clean finishing
+proper fitting
+flexible bulk ordering
+and timely dispatch
+
+So if you’re looking for a reliable sportswear manufacturing partner
+connect with Jitesh Fabrics`
+  },
+  {
+    title: "Cargo Half Pants Reel: Jitesh Fabrics",
+    content: `In summers, are you looking for something comfortable yet stylish?
+
+Then meet our newly launched Cargo Half Pants
+
+With a lightweight feel
+easy all-day comfort
+utility pockets that actually work
+and a fit that feels just right
+
+Whether it’s for sports
+daily activities
+or all-day wear
+It stays comfortable throughout
+
+The relaxed fit keeps everything easy and breathable
+while the cargo detailing adds a sharper sporty look
+
+Made for people who like comfort
+without compromising on style
+
+And if you’re a retailer or sportswear brand looking for products like this
+connect with Jitesh Fabrics for your bulk requirements`
+  },
+  {
+    title: "Fabric Test Reel: Jitesh Fabrics",
+    content: `Hey, do you know why good sportswear feels different while playing?
+
+Because it’s not just about the look
+it’s about the fabric behind it
+
+A good sportswear fabric should feel lightweight
+move easily with you
+dry sweat faster
+and stay comfortable throughout
+
+That’s why we focus on fabrics that are built for movement and performance
+
+From stretch to sweat movement to comfort
+every detail matters
+
+Because good sportswear should perform as good as it looks
+
+And if you’re a retailer or a sportswear brand looking for products like this
+connect with Jitesh Fabrics for your bulk requirements
+
+Jitesh Fabrics
+Built for everyday comfort`
+  },
+  {
+    title: "Storytelling: Real Estate Deal",
+    content: `HOOK: "So here’s a story about the deal I almost lost... and what it taught me that I now tell every single client."
+
+A few years ago, I was working with a buyer and together we found their dream home.
+The offer was ready, paperwork was done and everything was set.
+
+But then things started to change.
+The buyer began second-guessing the decision.
+Because there were too many opinions coming from friends, family and outsiders.
+And before we knew it, we were close to losing the deal.
+
+That's when I learned something important.
+
+The first step is to understand your goals, budget and your lifestyle.
+
+Because when you know exactly what you're looking for, outside opinions become less important
+And that's a lesson I've carried into every deal.
+
+So if you're planning to buy a home DM "HOME" and let's understand your needs."`
+  },
+  {
+    title: "Storytelling: Closing Night",
+    content: `HOOK: "A client called me in tears the night before closing. And here's what happened."
+
+"Months earlier, we had sat together, discussed his budget, shortlisted the right communities, gone through multiple showings and spent weeks finding the right home.
+Eventually, we found the one, we completed the paperwork and the closing date was also set.
+
+Until I got a call late that night.
+
+And honestly, he was panicking.
+
+Actually a paperwork issue had come up, and he thought the entire deal was about to fall apart.
+And everything we had done, now all in vain.
+So that night, we worked through the issue, stayed in touch with everyone involved and made sure nothing was left unanswered.
+
+The next day, he got the keys.
+And today, he's living in that same home with his family happily and never faced any issue related to it.
+
+That's what Beyond Bricks is about.
+We don’t just give options of houses instead we are always there by your side.
+So if you're planning to buy a home this year, DM us 'HOME' and let's have a conversation."`
+  },
+  {
+    title: "Father’s Day: Real Estate",
+    content: `HOOK: "People often ask me why I got into real estate.
+I never really give the complete answer but today is the day I want to."
+
+"I grew up watching my father doin the same business.
+And what I remember most isn't the houses he sold.
+It's the people he helped.
+
+I watched him taking calls late at night, sitting with families who were nervous, helping them to find their dream home and how much trust people placed in him.
+
+That's where I learned something that still stays with me today.
+
+Real estate isn't about homes.
+It's about people and what matters even more is helping someone find a place where they'll build memories, raise a family, and create a life of their own in a small house.
+
+So this Father's Day, I'm grateful to him.
+Not just for everything he taught me about real estate.
+But for everything he taught me about people.
+
+Happy Father's Day to all the dads who continue to be an inspiration for their children."`
+  }
+];
 export default function CopywritingService() {
   return (
     <main className="min-h-screen bg-atalix-bg-primary overflow-hidden flex flex-col">
@@ -75,19 +241,22 @@ export default function CopywritingService() {
             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[1, 2, 3, 4].map((item) => (
-              <div key={item} className="group relative aspect-[4/3] rounded-[24px] overflow-hidden bg-[#1a1a1a] border border-white/5 cursor-pointer">
-                <div className="absolute inset-0 flex items-center justify-center p-12 text-center">
-                  <h3 className="text-2xl md:text-4xl font-heading font-bold text-white/40 group-hover:text-white/90 transition-colors duration-500 italic">
-                    &quot;[Headline Copy Example {item}]&quot;
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+            {scripts.map((script, idx) => (
+              <div 
+                key={idx} 
+                className="break-inside-avoid relative rounded-[24px] overflow-hidden bg-[#1a1a1a]/40 border border-white/5 hover:border-white/20 transition-all duration-300 group"
+              >
+                <div className="p-8 md:p-10">
+                  <h3 className="text-xl md:text-2xl font-heading font-bold text-white mb-6 uppercase tracking-wide">
+                    {script.title}
                   </h3>
+                  <div className="text-white/60 text-sm md:text-base leading-relaxed whitespace-pre-wrap font-light group-hover:text-white/80 transition-colors">
+                    {script.content}
+                  </div>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-0 left-0 p-8 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                  <h3 className="text-xl font-bold text-white mb-2">[Project Name]</h3>
-                  <p className="text-white/60">[Copywriting Format]</p>
-                </div>
+                {/* Decorative gradient effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-atalix-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               </div>
             ))}
           </div>
